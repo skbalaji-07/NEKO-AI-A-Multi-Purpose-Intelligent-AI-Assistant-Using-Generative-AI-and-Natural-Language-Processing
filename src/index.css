@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f1ebde;
+  --surface: #faf6ec;
+  --surface2: #e9e1cc;
+  --line: #dcd1b4;
+  --ink: #201f2a;
+  --mut: #6f6a58;
+  --accent: #b45309;
+  --accent-hi: #92400e;
+  --accent-ink: #fff6e8;
+  --blue: #4d699b;
+  --green: #6f894e;
+  --red: #c84053;
+  --pink: #b35b79;
+  --teal: #597b75;
+  --gold: #836f2c;
+}
+
+.dark {
+  --bg: #16161d;
+  --surface: #1e1e27;
+  --surface2: #272733;
+  --line: #363646;
+  --ink: #dcd7ba;
+  --mut: #9c9787;
+  --accent: #ff9e3b;
+  --accent-hi: #ffb35c;
+  --accent-ink: #1f1305;
+  --blue: #7e9cd8;
+  --green: #98bb6c;
+  --red: #ff5d62;
+  --pink: #d27e99;
+  --teal: #7aa89f;
+  --gold: #e6c384;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-mut: var(--mut);
+  --color-accent: var(--accent);
+  --color-accent-hi: var(--accent-hi);
+  --color-accent-ink: var(--accent-ink);
+  --color-blue: var(--blue);
+  --color-green: var(--green);
+  --color-red: var(--red);
+  --color-pink: var(--pink);
+  --color-teal: var(--teal);
+  --color-gold: var(--gold);
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--mut) 40%, transparent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--mut) 35%, transparent);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blinkDot {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.type-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: blinkDot 1.2s infinite ease-in-out;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(700px 380px at 15% -5%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+    radial-gradient(600px 400px at 90% 10%, color-mix(in srgb, var(--blue) 14%, transparent), transparent 70%),
+    radial-gradient(500px 500px at 50% 110%, color-mix(in srgb, var(--pink) 10%, transparent), transparent 70%);
+}
+
+.paw-grid {
+  background-image: radial-gradient(color-mix(in srgb, var(--mut) 22%, transparent) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
